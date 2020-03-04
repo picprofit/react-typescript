@@ -11,12 +11,17 @@ const FormFieldsWrap = styled.div`
   align-items: flex-end;
 `;
 
-const TodoForm: React.FC = () => {
+interface TodoFormProps {
+  addTask: (task: string) => void;
+}
+
+const TodoForm: React.FC<TodoFormProps> = ({ addTask }) => {
   const [title, setTitle] = useState<string>('');
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(`Submit: ${title}`);
+    addTask(title);
+    setTitle('');
   };
 
   return (
