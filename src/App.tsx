@@ -6,11 +6,28 @@ import Typography from '@material-ui/core/Typography';
 import NavBar from './components/NavBar';
 import TodoForm from './components/TodoForm';
 
+const getRandomKey = (): string => {
+  return Math.random()
+    .toString(36)
+    .substring(7);
+};
+
+interface taskInterface {
+    id: string;
+    value: string;
+}
+
 const App: React.FC = () => {
-  const [tasks, setTasks] = useState<string[]>([]);
+  const [tasks, setTasks] = useState<taskInterface[]>([]);
 
   const addTask = (task: string) => {
-    setTasks([...tasks, task]);
+    setTasks([
+      ...tasks,
+      {
+        id: getRandomKey(),
+        value: task
+      }
+    ]);
   };
 
   return (
@@ -24,7 +41,7 @@ const App: React.FC = () => {
           <TodoForm addTask={addTask} />
           <ul>
             {tasks.map(item => {
-              return <li key={item}>{item}</li>;
+              return <li key={item.id}>{item.value}</li>;
             })}
           </ul>
         </Box>
