@@ -3,19 +3,16 @@ import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 
+import taskInterface from './interfaces/taskInterface';
 import NavBar from './components/NavBar';
 import TodoForm from './components/TodoForm';
+import TodoList from './components/TodoList';
 
 const getRandomKey = (): string => {
   return Math.random()
     .toString(36)
     .substring(7);
 };
-
-interface taskInterface {
-    id: string;
-    value: string;
-}
 
 const App: React.FC = () => {
   const [tasks, setTasks] = useState<taskInterface[]>([]);
@@ -38,12 +35,12 @@ const App: React.FC = () => {
           <Typography variant="h3" component="h1">
             Tasks list created with React + TypeScript + Material UI
           </Typography>
-          <TodoForm addTask={addTask} />
-          <ul>
-            {tasks.map(item => {
-              return <li key={item.id}>{item.value}</li>;
-            })}
-          </ul>
+          <Box mt={1} mb={1}>
+            <TodoForm addTask={addTask} />
+          </Box>
+          <Box mt={1} mb={1}>
+            <TodoList tasks={tasks}></TodoList>
+          </Box>
         </Box>
       </Container>
     </>
