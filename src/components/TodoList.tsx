@@ -3,7 +3,7 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import styled from "styled-components";
+import styled from 'styled-components';
 
 import DeleteIcon from '@material-ui/icons/Delete';
 import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
@@ -22,7 +22,8 @@ interface StyledProps {
 }
 
 const Task = styled(ListItem)`
-${(props: StyledProps) => props.completed ? "text-decoration: line-through;" : ""}
+  ${(props: StyledProps) =>
+    props.completed ? 'text-decoration: line-through;' : ''}
 `;
 
 const TodoList: React.FC<TodoListProps> = ({
@@ -34,13 +35,16 @@ const TodoList: React.FC<TodoListProps> = ({
     <List>
       {tasks.map(item => {
         return (
-          <Task key={item.id} button completed={item.completed}>
-            <ListItemIcon
-              onClick={(e: React.MouseEvent<HTMLElement>) => {
-                e.preventDefault();
-                toggleTask(item.id);
-              }}
-            >
+          <Task
+            key={item.id}
+            button
+            completed={item.completed}
+            onClick={(e: React.MouseEvent<HTMLElement>) => {
+              e.preventDefault();
+              toggleTask(item.id);
+            }}
+          >
+            <ListItemIcon>
               {item.completed ? <CheckBoxIcon /> : <CheckBoxOutlineBlankIcon />}
             </ListItemIcon>
             <ListItemText primary={item.value} />
