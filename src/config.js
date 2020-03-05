@@ -1,4 +1,3 @@
-import black from '@material-ui/core/colors/grey';
 import orange from '@material-ui/core/colors/orange';
 import { createMuiTheme } from '@material-ui/core/styles';
 
