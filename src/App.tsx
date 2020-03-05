@@ -18,8 +18,8 @@ const App: React.FC = () => {
   const [tasks, setTasks] = useState<taskInterface[]>([]);
 
   const addTask = (task: string) => {
-    setTasks([
-      ...tasks,
+    setTasks(prev => [
+      ...prev,
       {
         id: getRandomKey(),
         value: task
@@ -28,8 +28,8 @@ const App: React.FC = () => {
   };
 
   const deleteTask = (taskId: string) => {
-    setTasks(
-      tasks.filter((item: taskInterface): boolean => {
+    setTasks(prev =>
+      prev.filter((item: taskInterface): boolean => {
         return taskId !== item.id;
       })
     );
