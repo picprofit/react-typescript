@@ -27,6 +27,14 @@ const App: React.FC = () => {
     ]);
   };
 
+  const deleteTask = (taskId: string) => {
+    setTasks(
+      tasks.filter((item: taskInterface): boolean => {
+        return taskId !== item.id;
+      })
+    );
+  };
+
   return (
     <>
       <NavBar />
@@ -39,7 +47,7 @@ const App: React.FC = () => {
             <TodoForm addTask={addTask} />
           </Box>
           <Box mt={1} mb={1}>
-            <TodoList tasks={tasks}></TodoList>
+            <TodoList tasks={tasks} deleteTask={deleteTask}></TodoList>
           </Box>
         </Box>
       </Container>

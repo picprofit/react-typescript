@@ -9,14 +9,22 @@ import taskInterface from '../interfaces/taskInterface';
 
 interface TodoListProps {
   tasks: taskInterface[];
+  deleteTask: (taskId: string) => void;
 }
 
-const TodoList: React.FC<TodoListProps> = ({ tasks }) => {
+const TodoList: React.FC<TodoListProps> = ({ tasks, deleteTask }) => {
   return (
     <List>
       {tasks.map(item => {
         return (
-          <ListItem key={item.id} button>
+          <ListItem
+            key={item.id}
+            onClick={(e: React.MouseEvent<HTMLElement>) => {
+              e.preventDefault();
+              deleteTask(item.id);
+            }}
+            button
+          >
             <ListItemIcon>
               <ArrowForwardIosIcon />
             </ListItemIcon>
