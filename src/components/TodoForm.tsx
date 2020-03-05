@@ -9,6 +9,7 @@ import { theme } from '../config';
 const FormFieldsWrap = styled.div`
   display: flex;
   align-items: flex-end;
+  justify-content: center;
 `;
 
 interface TodoFormProps {

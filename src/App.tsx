@@ -40,15 +40,17 @@ const App: React.FC = () => {
       <NavBar />
       <Container>
         <Box mt={5} mb={5}>
-          <Typography variant="h3" component="h1">
+          <Typography variant="h4" component="h1">
             Tasks list created with React + TypeScript + Material UI
           </Typography>
-          <Box mt={1} mb={1}>
-            <TodoForm addTask={addTask} />
-          </Box>
-          <Box mt={1} mb={1}>
-            <TodoList tasks={tasks} deleteTask={deleteTask}></TodoList>
-          </Box>
+          <Container maxWidth="sm">
+            <Box mt={1} mb={1}>
+              <TodoForm addTask={addTask} />
+            </Box>
+            <Box mt={1} mb={1}>
+              <TodoList tasks={tasks} deleteTask={deleteTask}></TodoList>
+            </Box>
+          </Container>
         </Box>
       </Container>
     </>
