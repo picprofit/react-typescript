@@ -22,7 +22,8 @@ const App: React.FC = () => {
       ...prev,
       {
         id: getRandomKey(),
-        value: task
+        value: task,
+        completed: false
       }
     ]);
   };
@@ -35,12 +36,27 @@ const App: React.FC = () => {
     );
   };
 
+  const toggleTask = (taskId: string) => {
+    setTasks(prev =>
+      prev.map(
+        (item: taskInterface): taskInterface => {
+          return taskId === item.id
+            ? {
+                ...item,
+                completed: !item.completed
+              }
+            : item;
+        }
+      )
+    );
+  };
+
   return (
     <>
       <NavBar />
       <Container>
         <Box mt={5} mb={5}>
-          <Typography variant="h4" component="h1">
+          <Typography variant="h4" component="h1" align="center">
             Tasks list created with React + TypeScript + Material UI
           </Typography>
           <Container maxWidth="sm">
@@ -48,7 +64,7 @@ const App: React.FC = () => {
               <TodoForm addTask={addTask} />
             </Box>
             <Box mt={1} mb={1}>
-              <TodoList tasks={tasks} deleteTask={deleteTask}></TodoList>
+              <TodoList tasks={tasks} deleteTask={deleteTask} toggleTask={toggleTask}></TodoList>
             </Box>
           </Container>
         </Box>
